@@ -17,6 +17,18 @@ config :event_organizer, EventOrganizerWeb.Endpoint,
   pubsub_server: EventOrganizer.PubSub,
   live_view: [signing_salt: "Dx9MfATf"]
 
+# Configures tailwind
+config :tailwind,
+  version: "3.1.6",
+  default: [
+    args: ~w(
+        --config=tailwind.config.js
+        --input=css/app.css
+        --output=../priv/static/assets/app.css
+      ),
+    cd: Path.expand("../assets", __DIR__)
+  ]
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

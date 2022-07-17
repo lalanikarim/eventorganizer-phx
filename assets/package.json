@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "alpinejs": "^3.10.2"
+  },
+  "devDependencies": {
+    "js-datepicker": "^5.18.0"
+  }
+}
