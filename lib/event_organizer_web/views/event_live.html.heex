@@ -1,0 +1,25 @@
+<table class="table-auto">
+  <thead>
+    <tr>
+      <th class="text-left w-40">Date</th>
+      <th class="text-left w-60">Event</th>
+      <th class="text-left w-40">Location</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for event <- @events.data do %>
+    <tr>
+      <td><%= event.date %></td>
+      <td><%= event.name %></td>
+      <td><%= event.location.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th class="text-left w-40">Date</th>
+      <th class="text-left w-60">Event</th>
+      <th class="text-left w-40">Location</th>
+    </tr>
+  </tfoot>
+</table>

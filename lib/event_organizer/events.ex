@@ -4,6 +4,7 @@ defmodule EventOrganizer.Events do
   """
 
   import Ecto.Query, warn: false
+  import EventOrganizer
   alias EventOrganizer.Repo
 
   alias EventOrganizer.Models.Event
@@ -19,19 +20,21 @@ defmodule EventOrganizer.Events do
       [%Event{}, ...]
 
   """
-  def list_event(page \\ 1, per_page \\ 20) do
-    offset = (page - 1) * per_page
-    %{events: Event 
+  def list_event(options \\ []) do
+    [page: page, per_page: per_page, offset: offset] = get_pager_options(options)
+    total = Event
+    |> select(count())
+    |> Repo.one()
+    %{data: Event 
     |> order_by([desc: :date])
     |> offset(^offset) 
     |> limit(^per_page)
     |> preload([:event_type, :location])
     |> Repo.all(),
-    total: Event
-    |> select(count())
-    |> Repo.one(),
+    total: total,
     page: page,
-    per_page: per_page
+    per_page: per_page,
+    last_page: (total / per_page) |> :math.ceil |> round
     }
   end
 

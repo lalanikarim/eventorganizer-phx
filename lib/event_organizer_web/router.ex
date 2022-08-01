@@ -19,6 +19,7 @@ defmodule EventOrganizerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    live "/events", EventLive
   end
 
   # Other scopes may use custom stacks.
