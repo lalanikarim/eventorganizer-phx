@@ -23,9 +23,9 @@ import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
-import topbar from "../vendor/topbar"
-import AlpineInstance from "../vendor/alpinejs"
-import datepicker from "./datepicker.min"
+import topbar from "topbar"
+import AlpineInstance from "alpinejs"
+import datepicker from "js-datepicker"
 
 window.datepicker = datepicker
 
